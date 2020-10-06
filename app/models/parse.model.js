@@ -49,6 +49,10 @@ function defaultMethod(request) {
         break;
       case 2:
         if (element !== "") {
+          if(element.length > 0)
+          {
+            element = formatNumber(element)
+          }
           parseArr.push(element);
         }
         break;
@@ -72,6 +76,13 @@ function defaultMethod(request) {
   })
 
   return parsed;
+}
+
+function formatNumber(clientId) {
+  if (Number(clientId) && clientId.length === 7) {
+    return clientId.substr(0, 3)+"-"+ clientId.substr(3, 7)
+  }
+  return clientId;
 }
 
 module.exports = Parsed;
